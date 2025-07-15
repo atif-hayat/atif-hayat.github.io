@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Blog - ICoder </title>
+   <link rel="icon" type="image/x-icon" href="images/favicon of icoder.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    /* style for nav  */
+    body.dark-mode {
+  background-color: #121212; /* Optional: dark background */
+  color: white;
+}
+/* Make all common text elements white */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode a,
+body.dark-mode li,
+body.dark-mode span,
+body.dark-mode label,
+body.dark-mode div,
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode button {
+  color: white !important;
+}
+body.dark-mode ::placeholder {
+  color: #ccc;
+}
+    .navbar {
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+    }
+    .navbar-brand {
+      margin-right: 20px;
+    }
+    .navbar-nav .nav-link {
+      margin-right: 15px;
+      color: white !important;
+    }
+    .navbar-nav .nav-link:not(.explore):hover {
+      color: white !important;
+    }
+    .navbar-nav .nav-link.explore {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+    .navbar-nav .nav-link.explore:hover {
+      color: white !important;
+    }
+    .form-inline-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-red {
+      background-color: red;
+      color: white;
+      border: none;
+    }
+    .btn-red:hover {
+      background-color: darkred;
+      color: white;
+    }
+    .modal-content {
+      max-width: 400px;
+      margin: auto;
+    }
+    .dark-mode {
+      background-color: #121212 !important;
+      color: #f1f1f1;
+    }
+    .dark-mode .navbar,
+    .dark-mode .dropdown-menu {
+      background-color: #1e1e1e !important;
+    }
+    .dark-mode .nav-link,
+    .dark-mode .dropdown-item {
+      color: #f1f1f1 !important;
+    }
+    .dark-mode .btn-red {
+      background-color: #ff4444;
+    }
+    .dark-mode .form-control {
+      background-color: #333;
+      color: #f1f1f1;
+      border: 1px solid #555;
+    }
+    .dark-mode .modal-content {
+      background-color: #1e1e1e;
+    }
+
+    .toggle-switch {
+      display: flex;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .form-inline-buttons {
+        justify-content: center;
+      }
+
+      .navbar-nav {
+        text-align: center;
+      }
+
+      .navbar-brand {
+        margin-bottom: 10px;
+      }
+    }
+      body {
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.3s, color 0.3s;
+    } 
+    /* Optional fix for inline styles forcing black text */
+body.dark-mode [style*="color: #333"],
+body.dark-mode [style*="color:#333"],
+body.dark-mode [style*="color: rgb(51, 51, 51)"] {
+  color: white !important;
+}
+/* 🔧 Force text inside common containers to white in dark mode */
+body.dark-mode .card,
+body.dark-mode .card-body,
+body.dark-mode .card-text,
+body.dark-mode .card-title,
+body.dark-mode .counter-box,
+body.dark-mode .counter-box h2,
+body.dark-mode .counter-box p,
+body.dark-mode .flip-back,
+body.dark-mode .navbar,
+body.dark-mode footer,
+body.dark-mode footer a,
+body.dark-mode footer p,
+body.dark-mode footer li,
+body.dark-mode .modal-content {
+  color: white !important;
+  background-color: transparent !important;
+}
+    /* ends style of nav here  */
+    .blog-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+    .blog-image {
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .blog-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .blog-meta {
+      font-size: 0.85rem;
+      color: #6c757d;
+    }
+    .section-title {
+      font-weight: 700;
+      color: #343a40;
+    }
+    
+    /* for login and sign up to remain background white style   */
+     /* Force white background and black text for modals in dark mode */
+     /* Force white background and black text for modals in dark mode */
+body.dark-mode .modal-content {
+  background-color: white !important;
+  color: black !important;
+}
+/* Ensure all text elements in the modal are black */
+body.dark-mode .modal-content,
+body.dark-mode .modal-content * {
+  color: black !important;
+}
+/* Force form inputs to be readable */
+body.dark-mode .modal-content input,
+body.dark-mode .modal-content textarea {
+  background-color: white !important;
+  color: black !important;
+}
+/* Fix dropdown item hover in dark mode */
+body.dark-mode .dropdown-menu .dropdown-item:hover {
+  background-color: #333 !important; /* dark background */
+  color: #fff !important;            /* white text */
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- HERE i have made nav bar and navbar starts from here  -->
+  <!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNavbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">ICoder</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:5500/ICoder%20Folder/home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:5500/ICoder%20Folder/about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:5500/ICoder%20Folder/contact.html#">Contact Us</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle explore" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Explore</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="http://127.0.0.1:5500/ICoder%20Folder/My%20portfolio.html">Portfolio</a></li>
+            <li><a class="dropdown-item" href="#">Services</a></li>
+            <li><a class="dropdown-item" href="#">Team</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 flex-wrap mt-2 mt-lg-0">
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button>
+  <!-- Move dark mode toggle to the end -->
+  <button id="darkModeToggle" class="btn btn-secondary">🌙</button>
+</div>
+  </div>
+</nav>
+<!-- Navbar End -->
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login to ICoder</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="loginEmail" required>
+            <div class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="loginPassword" required>
+          </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="checkLogin">
+            <label class="form-check-label" for="checkLogin">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-red w-100">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Signup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Sign Up for ICoder</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="signupForm">
+          <div class="mb-3">
+            <label for="signupEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="signupEmail" required>
+            <div class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="signupPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="signupPassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" required>
+          </div>
+          <button type="submit" class="btn btn-red w-100">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Back to Navbar Button -->
+  <button id="backToTopBtn" class="position-fixed bottom-0 end-0 m-4 rounded-circle border-0"
+    style="width: 50px; height: 50px; background-color: black; color: white; font-size: 22px; z-index: 1050;">
+    ↑
+  </button>
+  <!-- finally this is ending of nav bar  -->
+  <!-- Blog Categories -->
+  <section class="container my-5">
+    <div class="text-center mb-5">
+      <h1 class="section-title">Explore the ICoder Blog</h1>
+      <p class="text-muted">Tutorials, project ideas, tech news, resources, and inspiring stories from developers.</p>
+    </div>
+    <div class="row g-4">
+      <!-- Tutorials -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card blog-card h-100">
+          <img src="images/BLOG first card img.webp" class="card-img-top blog-image" alt="Tutorials">
+          <div class="card-body">
+            <h5 class="blog-title">Step-by-Step Tutorials</h5>
+            <p class="blog-meta">By ICoder • July 2025</p>
+            <p class="card-text">Easy-to-follow guides to help you master web development, JavaScript, and more.</p>
+            <a href="#" class="btn btn-outline-dark btn-sm">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Ideas -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card blog-card h-100">
+          <img src="images/blog second card img.webp" class="card-img-top blog-image" alt="Projects">
+          <div class="card-body">
+            <h5 class="blog-title">Creative Project Ideas</h5>
+            <p class="blog-meta">By Atif hayat • July 2025</p>
+            <p class="card-text">Get inspired with full-stack project ideas you can build and showcase in your portfolio.</p>
+            <a href="#" class="btn btn-outline-dark btn-sm">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech News -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card blog-card h-100">
+          <img src="images/blog third image.webp" class="card-img-top blog-image" alt="Tech News">
+          <div class="card-body">
+            <h5 class="blog-title">Latest Tech News</h5>
+            <p class="blog-meta">By Atif hayat • July 2025</p>
+            <p class="card-text">Stay updated on the latest trends in tech, AI breakthroughs, and developer tools.</p>
+            <a href="#" class="btn btn-outline-dark btn-sm">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card blog-card h-100">
+          <img src="images/blog card four img.webp" class="card-img-top blog-image" alt="Resources">
+          <div class="card-body">
+            <h5 class="blog-title">Helpful Resources</h5>
+            <p class="blog-meta">By Atif hayat • July 2025</p>
+            <p class="card-text">A curated list of books, tools, websites, and communities to fuel your learning journey.</p>
+            <a href="#" class="btn btn-outline-dark btn-sm">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Stories -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card blog-card h-100">
+          <img src="images/blog last card img.png" class="card-img-top blog-image" alt="Stories">
+          <div class="card-body">
+            <h5 class="blog-title">Discover My Journey</h5>
+            <p class="blog-meta">By Atif hayat • July 2025</p>
+            <p class="card-text">Every coder starts somewhere — these are the moments that made the journey worth it.</p>
+            <a href="http://127.0.0.1:5500/ICoder%20Folder/My%20portfolio.html" class="btn btn-outline-dark btn-sm">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-4">
+  <div class="container-fluid px-4">
+    <div class="mx-auto" style="max-width: 1140px;">
+      
+      <!-- Footer Top Row -->
+      <div class="row justify-content-between text-md-start text-center">
+
+        <!-- Left: iCoder Info -->
+        <div class="col-md-4 mb-4">
+          <h5 class="text-uppercase fw-bold">ICoder</h5>
+          <p>
+            Your trusted platform to learn coding, design, AI, and full-stack development — from beginner to expert level.
+          </p>
+        </div>
+
+        <!-- Center: Quick Links -->
+        <div class="col-md-3 mb-4">
+          <h6 class="text-uppercase fw-bold mb-3 text-center">Quick Links</h6>
+          <ul class="list-unstyled text-center">
+            <li ><a href="http://127.0.0.1:5500/ICoder%20Folder/home.html" class="text-white text-decoration-none">Home</a></li>
+            <li><a href="http://127.0.0.1:5500/ICoder%20Folder/about.html" class="text-white text-decoration-none">About</a></li>
+            <li><a href="http://127.0.0.1:5500/ICoder%20Folder/ICoder%20Blog.html" class="text-white text-decoration-none">Blog</a></li>
+            <li><a href="http://127.0.0.1:5500/ICoder%20Folder/contact.html#" class="text-white text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Right: Newsletter -->
+        <div class="col-md-4 mb-4">
+          <h6 class="text-uppercase fw-bold mb-3 text-md-end text-center">Subscribe to Newsletter</h6>
+          <p class="text-md-end text-center">
+            Get the latest tutorials, updates, and coding tips directly to your inbox.
+          </p>
+          <form class="d-flex justify-content-md-end justify-content-center">
+            <input type="email" class="form-control me-2" placeholder="Email address" required style="max-width: 250px;">
+            <button class="btn btn-outline-light" type="submit">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <hr class="bg-light">
+
+      <!-- Footer Bottom Row -->
+      <div class="row align-items-center justify-content-between text-md-start text-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <p class="mb-0 small">© 2025 <strong>ICoder</strong>. All rights reserved.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-md-end justify-content-center">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-5"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- this script is for the fixed button arrow  -->
+  <script>
+    document.getElementById("backToTopBtn").addEventListener("click", function () {
+      const nav = document.getElementById("mainNavbar");
+      if (nav) {
+        nav.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" }); // fallback
+      }
+    });
+  </script>
+  <!-- JS Logic -->
+<script>
+  // Signup Logic
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('signupEmail').value;
+    const pass = document.getElementById('signupPassword').value;
+    const confirm = document.getElementById('confirmPassword').value;
+
+    if (pass !== confirm) {
+      alert('Passwords do not match!');
+      return;
+    }
+
+    localStorage.setItem('userEmail', email);
+    localStorage.setItem('userPassword', pass);
+    alert('Signup successful!');
+    const modal = bootstrap.Modal.getInstance(document.getElementById('signupModal'));
+    modal.hide();
+  });
+
+  // Login Logic
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const pass = document.getElementById('loginPassword').value;
+    const storedEmail = localStorage.getItem('userEmail');
+    const storedPass = localStorage.getItem('userPassword');
+
+    if (email === storedEmail && pass === storedPass) {
+      alert('Login successful!');
+      window.location.href = "http://127.0.0.1:5500/blog%20page/home.html#";
+    } else {
+      alert('Invalid credentials.');
+    }
+  });
+
+
+  // Load saved theme
+  window.addEventListener('DOMContentLoaded', () => {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+  });
+</script>
+<!-- this also for dark mode of whole body -->
+ <script>
+  const darkToggleBtn = document.getElementById("darkModeToggle");
+  const body = document.body;
+
+  // Apply saved theme on page load
+  window.addEventListener("DOMContentLoaded", function () {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      body.classList.add("dark-mode");
+    }
+  });
+
+  // Toggle theme on button click
+  darkToggleBtn.addEventListener("click", function () {
+    body.classList.toggle("dark-mode");
+
+    // Save theme preference
+    if (body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+</script>
+<script>
+  // Handle login form submission
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent form default submission behavior
+    // You can add login validation here if needed
+    // Redirect to homepage after login
+    window.location.href = "http://127.0.0.1:5500/blog%20page/home.html";
+  });
+</script>
+</body>
+
+</html>
